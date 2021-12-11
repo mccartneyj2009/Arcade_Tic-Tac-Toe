@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+:root {
+    --primary-color: #663606;
+    --secondary-color: rgb(255, 136, 0);
+}
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Permanent Marker', Arial, Helvetica, sans-serif;
+}
+
+body,
+.board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+}
+
+body {
+    flex-direction: column;
+    margin-top: 25px;
+    font-size: 50px;
+    /* height: 100vh; */
+}
+
+header {
+    text-decoration: underline;
+}
+
+.board {
+    height: 360px;
+    width: 360px;
+    flex-wrap: wrap;
+    margin: 50px 0 50px 0;
+    color: var(--secondary-color);
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    flex-basis: 120px;
+    font-size: 100px;
+    text-transform: capitalize;
+}
+
+.cell:nth-child(3n+2) {
+    border-left: 10px solid var(--secondary-color);
+    border-right: 10px solid var(--secondary-color);
+}
+
+.cell:nth-child(n+4):nth-child(-n+6) {
+    border-top: 10px solid var(--secondary-color);
+    border-bottom: 10px solid var(--secondary-color);
+}
+
+#game-setup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    /* border-top: white 5px solid; */
+    background-color: var(--secondary-color);
+}
+
+#start-game-btn {
+    margin: 5px;
+    font-size: 48px;
+    background-color: var(--primary-color);
+    outline: none;
+    border: none;
+    width: 400px;
+}
+
+.player-marker-message {
+    text-decoration: underline;
+}
