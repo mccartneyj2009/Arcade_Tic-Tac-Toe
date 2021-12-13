@@ -11,11 +11,11 @@
 
 <body>
     <header>TIC-TAC-TOE TIME!!!</header>
-    <div id="player-turn">Player 1's turn</div>
+    <div id="in-game-message"></div>
 
     <div class="board">
-        <div class="cell"><span>x</span></div>
-        <div class="cell"><span>o</span></div>
+        <div class="cell"><span></span></div>
+        <div class="cell"><span></span></div>
         <div class="cell"><span></span></div>
         <div class="cell"><span></span></div>
         <div class="cell"><span></span></div>
@@ -27,17 +27,17 @@
 
     <section id="game-setup">
         <button id="start-game-btn">Start Game</button>
-        <div id="player-selection">
-            <div id="player-1-selection">
+        <div id="player-selections">
+            <div class="player-selection">
                 <span class="player-marker-message">Player 1 Marker:</span>
-                <select name="markers" id="player-markers">
+                <select name="markers" class="player-markers-selection">
                     <option value="x">X</option>
                     <option value="o">O</option>
                 </select>
             </div>
-            <div id="player-2-selection">
+            <div class="player-selection">
                 <span class="player-marker-message">Player 2 Marker:</span>
-                <select name="markers" id="player-markers">
+                <select name="markers" class="player-markers-selection">
                     <option value="o">O</option>
                     <option value="x">X</option>
                 </select>
@@ -45,7 +45,7 @@
         </div>
     </section>
 
-
+<script src="app.js"></script>
 </body>
 
 </html>
