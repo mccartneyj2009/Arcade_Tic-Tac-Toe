@@ -1,119 +1,140 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 :root {
-  --primary-color: #663606;
-  --secondary-color: rgb(255, 136, 0);
-  --active-color: #6636069f;
+    --primary-color: #663606;
+    --secondary-color: rgb(255, 136, 0);
+    --active-color: #6636069f;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Permanent Marker", Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Permanent Marker", Arial, Helvetica, sans-serif;
+}
+
+html {
+    height: auto;
+    width: auto;
 }
 
 body,
 .board {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
 }
 
 body {
-  flex-direction: column;
-  font-size: 50px;
-  height: auto;
-  justify-content: space-between;
+    flex-direction: column;
+    font-size: 50px;
+    height: auto;
+    justify-content: space-between;
 }
 
 header {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .board {
-  height: 360px;
-  width: 360px;
-  flex-wrap: wrap;
-  margin: 50px 0 50px 0;
-  color: var(--secondary-color);
+    height: 360px;
+    width: 360px;
+    flex-wrap: wrap;
+    margin: 50px 0 50px 0;
+    color: var(--secondary-color);
 }
 
 .cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px;
-  flex-basis: 120px;
-  font-size: 100px;
-  text-transform: capitalize;
-  text-shadow: 2px 2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    flex-basis: 120px;
+    font-size: 100px;
+    text-transform: capitalize;
+    text-shadow: 2px 2px black;
 }
 
 .cell:nth-child(2n-1) {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  box-shadow: 2px 2px 2px 10px black;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    box-shadow: 2px 2px 2px 10px black;
 }
 
 #game-setup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-  border-top: white 5px solid;
-  border-bottom: white 5px solid;
-  background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    border-top: white 5px solid;
+    border-bottom: white 5px solid;
+    background-color: var(--secondary-color);
 }
 
 #start-game-btn {
-  margin: 5px;
-  font-size: 48px;
-  background-color: var(--primary-color);
-  outline: none;
-  border: none;
-  width: 400px;
-  box-shadow: 0 5px 5px -2px black;
+    margin: 5px;
+    font-size: 48px;
+    background-color: var(--primary-color);
+    outline: none;
+    border: none;
+    width: 400px;
+    box-shadow: 0 5px 5px -2px black;
 }
 
 #start-game-btn:hover,
-.player-markers-selection:hover {
-  transition: ease-out 0.25s;
-  color: var(--secondary-color);
-  text-shadow: 2px 2px black;
-  box-shadow: 5px 5px 10px 0px black;
+.player-markers-selection:hover,
+.player-name-input:hover {
+    transition: ease-out 0.25s;
+    color: var(--secondary-color);
+    text-shadow: 2px 2px black;
+    box-shadow: 5px 5px 10px 0px black;
 }
 
 #start-game-btn:active {
-  transition: ease-out 0.1s;
-  color: white;
-  background-color: var(--active-color);
+    transition: ease-out 0.1s;
+    color: white;
+    background-color: var(--active-color);
 }
 
 #player-selections {
-  width: 75vw;
+    width: 75vw;
 }
 
 .player-selection {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.player-name-input {
+    width: 400px;
+    height: 50px;
+    font-size: 36px;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 5px -2px black;
+    text-shadow: 2px 2px black;
 }
 
 .player-marker-message {
-  text-decoration: underline;
+    text-decoration: underline;
+    width: 222px;
 }
 
 .player-markers-selection {
-  width: 100px;
-  height: 50px;
-  font-size: 36px;
-  text-align: center;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  border: none;
-  outline: none;
-  box-shadow: 0 5px 5px -2px black;
-  text-shadow: 2px 2px black;
+    width: 100px;
+    height: 50px;
+    font-size: 36px;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 5px -2px black;
+    text-shadow: 2px 2px black;
 }
