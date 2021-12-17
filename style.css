@@ -73,32 +73,22 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   border-top: white 5px solid;
   border-bottom: white 5px solid;
   background-color: var(--secondary-color);
 }
 
-/* #comp-opp {
+#comp-opp {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 #comp-opp-lbl {
-  font-size: 40px;
-  margin-left: 10px;
+  font-size: 36px;
+  margin: 10px;
 }
-
-input[type="checkbox"]:checked {
-  background-color: #663606;
-}
-
-#comp-opp-input {
-  height: 30px;
-  width: 30px;
-  /* background-color: var(--primary-color); */
-/* opacity: ; */
 
 #start-game-btn {
   margin: 5px;
@@ -112,7 +102,8 @@ input[type="checkbox"]:checked {
 
 #start-game-btn:hover,
 .player-markers-selection:hover,
-.player-name-input:hover {
+.player-name-input:hover,
+#comp-opp-selection:hover {
   transition: ease-out 0.25s;
   color: var(--secondary-color);
   text-shadow: 2px 2px black;
@@ -153,7 +144,8 @@ input[type="checkbox"]:checked {
   width: 222px;
 }
 
-.player-markers-selection {
+.player-markers-selection,
+#comp-opp-selection {
   width: 100px;
   height: 50px;
   font-size: 36px;
@@ -184,6 +176,15 @@ input[type="checkbox"]:checked {
 
   #in-game-message {
     font-size: 40px;
+  }
+
+  #comp-opp {
+    flex-direction: column;
+  }
+
+  #comp-opp-lbl {
+    font-size: 24px;
+    text-align: center;
   }
 
   #game-setup {
