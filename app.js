@@ -8,6 +8,16 @@ const gameState = {
         player2: "O",
     },
     gameBoard: ["", "", "", "", "", "", "", "", ""],
+    gameWinningCombinations: [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ],
     playerUp: 1,
     computerOpponent: "yes",
 };
@@ -123,6 +133,7 @@ function gamePlay(e) {
                     return;
                 }
                 computerPlay();
+                // Update board
                 for (let cell in cellValues) {
                     gameState.gameBoard[cell] = cellValues[cell].innerHTML;
                 }
@@ -175,79 +186,33 @@ function computerPlay() {
 
 function isWinner() {
     let gmBrd = gameState.gameBoard;
+    const gameWinners = gameState.gameWinningCombinations;
     let p1M = gameState.markers.player1;
     let p2M = gameState.markers.player2;
+    let xCount = 0;
+    let oCount = 0;
 
-    // row win combinations
-    if (gmBrd[0] === p1M && gmBrd[1] === p1M && gmBrd[2] === p1M) {
-        message.innerHTML = `${gameState.players.player1} WINS!`;
-        board.removeEventListener("click", gamePlay);
-        return true;
-    } else if (gmBrd[0] === p2M && gmBrd[1] === p2M && gmBrd[2] === p2M) {
-        message.innerHTML = `${gameState.players.player2} WINS!`;
-        board.removeEventListener("click", gamePlay);
-    }
-    if (gmBrd[3] === p1M && gmBrd[4] === p1M && gmBrd[5] === p1M) {
-        message.innerHTML = `${gameState.players.player1} WINS!`;
-        board.removeEventListener("click", gamePlay);
-        return true;
-    } else if (gmBrd[3] === p2M && gmBrd[4] === p2M && gmBrd[5] === p2M) {
-        message.innerHTML = `${gameState.players.player2} WINS!`;
-        board.removeEventListener("click", gamePlay);
-    }
-    if (gmBrd[6] === p1M && gmBrd[7] === p1M && gmBrd[8] === p1M) {
-        message.innerHTML = `${gameState.players.player1} WINS!`;
-        board.removeEventListener("click", gamePlay);
-        return true;
-    } else if (gmBrd[6] === p2M && gmBrd[7] === p2M && gmBrd[8] === p2M) {
-        message.innerHTML = `${gameState.players.player2} WINS!`;
-        board.removeEventListener("click", gamePlay);
-    }
-    //column win combinations
-    if (gmBrd[0] === p1M && gmBrd[3] === p1M && gmBrd[6] === p1M) {
-        message.innerHTML = `${gameState.players.player1} WINS!`;
-        board.removeEventListener("click", gamePlay);
-        return true;
-    } else if (gmBrd[0] === p2M && gmBrd[3] === p2M && gmBrd[6] === p2M) {
-        message.innerHTML = `${gameState.players.player2} WINS!`;
-        board.removeEventListener("click", gamePlay);
-    }
-    if (gmBrd[1] === p1M && gmBrd[4] === p1M && gmBrd[7] === p1M) {
-        message.innerHTML = `${gameState.players.player1} WINS!`;
-        board.removeEventListener("click", gamePlay);
-        return true;
-    } else if (gmBrd[1] === p2M && gmBrd[4] === p2M && gmBrd[7] === p2M) {
-        message.innerHTML = `${gameState.players.player2} WINS!`;
-        board.removeEventListener("click", gamePlay);
-    }
-    if (gmBrd[2] === p1M && gmBrd[5] === p1M && gmBrd[8] === p1M) {
-        message.innerHTML = `${gameState.players.player1} WINS!`;
-        board.removeEventListener("click", gamePlay);
-        return true;
-    } else if (gmBrd[2] === p2M && gmBrd[5] === p2M && gmBrd[8] === p2M) {
-        message.innerHTML = `${gameState.players.player2} WINS!`;
-        board.removeEventListener("click", gamePlay);
-    }
-    // diagonal win combinations
-    if (gmBrd[0] === p1M && gmBrd[4] === p1M && gmBrd[8] === p1M) {
-        message.innerHTML = `${gameState.players.player1} WINS!`;
-        board.removeEventListener("click", gamePlay);
-        return true;
-    } else if (gmBrd[0] === p2M && gmBrd[4] === p2M && gmBrd[8] === p2M) {
-        message.innerHTML = `${gameState.players.player2} WINS!`;
-        board.removeEventListener("click", gamePlay);
-    }
-    if (gmBrd[2] === p1M && gmBrd[4] === p1M && gmBrd[6] === p1M) {
-        message.innerHTML = `${gameState.players.player1} WINS!`;
-        board.removeEventListener("click", gamePlay);
-        return true;
-    } else if (gmBrd[2] === p2M && gmBrd[4] === p2M && gmBrd[6] === p2M) {
-        message.innerHTML = `${gameState.players.player2} WINS!`;
-        board.removeEventListener("click", gamePlay);
-    }
-    //draw game
-    if (!gameState.gameBoard.includes("")) {
-        message.innerHTML = "Game was a draw";
+    //testing for new winning logic
+    for (let combo of gameWinners) {
+        for (let cell of combo) {
+            if (gmBrd[cell] === p1M) {
+                xCount += 1;
+            }
+            if (xCount === 3) {
+                message.innerHTML = `${gameState.players.player1} WINS!`;
+                board.removeEventListener("click", gamePlay);
+                return true;
+            }
+            if (gmBrd[cell] === p2M) {
+                oCount += 1;
+            }
+            if (oCount === 3) {
+                message.innerHTML = `${gameState.players.player2} WINS!`;
+                board.removeEventListener("click", gamePlay);
+            }
+        }
+        xCount = 0;
+        oCount = 0;
     }
 }
 
@@ -286,8 +251,6 @@ function resetGame() {
 
     compOpponent.addEventListener("change", playAgainstComputer);
     compOpponent.disabled = false;
-
-    console.log(gameState);
 }
 
 // Initializations
