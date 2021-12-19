@@ -192,6 +192,7 @@ function isWinner() {
     let xCount = 0;
     let oCount = 0;
 
+    //check for winning combinations
     for (let combo of gameWinners) {
         for (let cell of combo) {
             if (gmBrd[cell] === p1M) {
